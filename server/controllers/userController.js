@@ -19,8 +19,8 @@ import bcrypt from "bcryptjs";
 
         const user = new User({ username, email, password: hashedPassword });
         await user.save();
-        return res.status(201).json({ message: "User registered successfully", user });
+        return res.status(201).json({ message: "User registered successfully", success : true, user });
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: error.message, success : false });
     }
 }

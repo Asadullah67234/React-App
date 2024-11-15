@@ -13,8 +13,8 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </ul>
         <div className="flex gap-5">
-          <button className="cursor-pointer border-2 border-red-500 py-2 px-3 rounded-lg hover:bg-red-500">Log In</button>
-          <button className="cursor-pointer border-2 border-red-500 py-2 px-3 rounded-lg hover:bg-red-500">Sign Up</button>
+          <Link to="/login" className="cursor-pointer border-2 border-red-500 py-2 px-3 rounded-lg hover:bg-red-500" >Log In</Link>
+          <Link to="/signup" className="cursor-pointer border-2 border-red-500 py-2 px-3 rounded-lg hover:bg-red-500" >Sign Up</Link>
         </div>
       </div>
     </>
