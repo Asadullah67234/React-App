@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     username: "",
     email: "",
@@ -34,7 +38,7 @@ const SignUp = () => {
 
     if (data.success) {
       alert(data.message);
-      window.location.href = "/login";
+      navigate("/login");
     }
   };
 
