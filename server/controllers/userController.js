@@ -1,9 +1,7 @@
-import express from "express";
 import User from "../models/userModel.js";
-
-const router = express.Router();
-
-router.post("/register", async(req, res) => {
+import bcrypt from "bcryptjs";
+ 
+ export const registerUser = async(req, res) => {
     const { username, email, password } = req.body;
     try {
         if (!username || !email || !password ) {
@@ -17,12 +15,12 @@ router.post("/register", async(req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: "User already exists" });
         }
-        const user = new User({ username, email, password });
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const user = new User({ username, email, password: hashedPassword });
         await user.save();
-        return res.status(201).json({ message: "User registered successfully" });
+        return res.status(201).json({ message: "User registered successfully", user });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
-})
-
-export default router
+}
